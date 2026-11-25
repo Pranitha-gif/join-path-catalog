@@ -1,0 +1,75 @@
+{
+  "tables": {
+    "customers": [
+      "customer_id",
+      "name",
+      "region_id"
+    ],
+    "regions": [
+      "region_id",
+      "region_name"
+    ],
+    "orders": [
+      "customer_id",
+      "order_date",
+      "order_id"
+    ],
+    "order_items": [
+      "order_id",
+      "order_item_id",
+      "product_id",
+      "quantity"
+    ],
+    "products": [
+      "category_id",
+      "product_id",
+      "product_name"
+    ],
+    "categories": [
+      "category_id",
+      "category_name"
+    ]
+  },
+  "joins": [
+    {
+      "left_table": "orders",
+      "left_column": "customer_id",
+      "right_table": "customers",
+      "right_column": "customer_id",
+      "join_type": "INNER",
+      "cardinality": "many-to-one"
+    },
+    {
+      "left_table": "customers",
+      "left_column": "region_id",
+      "right_table": "regions",
+      "right_column": "region_id",
+      "join_type": "INNER",
+      "cardinality": "many-to-one"
+    },
+    {
+      "left_table": "order_items",
+      "left_column": "order_id",
+      "right_table": "orders",
+      "right_column": "order_id",
+      "join_type": "INNER",
+      "cardinality": "many-to-one"
+    },
+    {
+      "left_table": "order_items",
+      "left_column": "product_id",
+      "right_table": "products",
+      "right_column": "product_id",
+      "join_type": "INNER",
+      "cardinality": "many-to-one"
+    },
+    {
+      "left_table": "products",
+      "left_column": "category_id",
+      "right_table": "categories",
+      "right_column": "category_id",
+      "join_type": "INNER",
+      "cardinality": "many-to-one"
+    }
+  ]
+}
